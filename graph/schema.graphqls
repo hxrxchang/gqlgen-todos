@@ -18,6 +18,7 @@ type Query {
   todos: [Todo!]!
   todo(id: ID!): Todo!
   users: [User!]!
+  user(id: ID!): User!
 }
 
 input NewTodo {
