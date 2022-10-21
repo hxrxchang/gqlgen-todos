@@ -42,6 +42,11 @@ func (r *queryResolver) Todo(ctx context.Context, id string) (*model.Todo, error
 	return todo, nil
 }
 
+// Users is the resolver for the users field.
+func (r *queryResolver) Users(ctx context.Context) ([]*model.User, error) {
+	return r.users, nil
+}
+
 // User is the resolver for the user field.
 func (r *todoResolver) User(ctx context.Context, obj *model.Todo) (*model.User, error) {
 	return &model.User{ID: obj.User.ID, Name: fmt.Sprintf("user %s", obj.UserID)}, nil

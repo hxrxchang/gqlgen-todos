@@ -8,4 +8,5 @@ import "github.com/hxrxchang/gqlgen-todos/graph/model"
 
 type Resolver struct{
 	todos []*model.Todo
+	users []*model.User
 }
