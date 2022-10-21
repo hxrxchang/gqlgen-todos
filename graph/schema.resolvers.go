@@ -29,9 +29,22 @@ func (r *queryResolver) Todos(ctx context.Context) ([]*model.Todo, error) {
 	return r.todos, nil
 }
 
+// Todo is the resolver for the todo field.
+func (r *queryResolver) Todo(ctx context.Context, id string) (*model.Todo, error) {
+	todos := r.todos
+	var todo *model.Todo
+	for _, v := range todos {
+		if v.ID == id {
+			todo = v
+			break
+		}
+	}
+	return todo, nil
+}
+
 // User is the resolver for the user field.
 func (r *todoResolver) User(ctx context.Context, obj *model.Todo) (*model.User, error) {
-	return &model.User{ID: obj.User.ID, Name: fmt.Sprintf("user %s", obj.UserID) }, nil
+	return &model.User{ID: obj.User.ID, Name: fmt.Sprintf("user %s", obj.UserID)}, nil
 }
 
 // Mutation returns generated.MutationResolver implementation.
